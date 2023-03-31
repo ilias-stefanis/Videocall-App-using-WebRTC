@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css">
+    <title>WebRTC</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+        </style>
+  </head>
+
+<body >
+  <div id="room-selection-container" class="centered">
+     <nav id="menu-navigation">
+        <li id="create-room">Create room</li>
+        <li id="join-room">Join existing Room</li>
+     </nav>
+     <div id="box">
+      <div id = "menu-div">
+        <label>Enter room ID </label> <br>
+        <input id="room-input" type="text" /><br><br>
+        <label>Enter username</label> <br>
+        <input id="user-id" type="text" /><br><br><br>
+        <button type="submit" id="connect-button" >CONNECT</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+
+  <div id="fullpage">
+    <img id="exit-img" src="assets/exit-img.png">
+    <a id="link"><img id="download-img" src="assets/download.png">
+    </a>
+    <div id="center-view">
+    </div>
+    <div id="bottomList-view">
+      <ul id="bottomList">
+      </ul>
+    </div>
+  </div>
+
+
+
+  <div id="video-chat-container" class="video-position" style="display: none">
+    <div id="header-highlighter"></div>
+    <div id="remote-video-container">
+
+    </div>
+    <div id="remote-video-container2">
+
+    </div>
+
+    <section id="bottom-section">
+
+      <div id="local-video-div">
+        <video id="local-video" autoplay="autoplay" muted="muted"></video>
+      </div>
+      <div id = 'profile'>
+        <div id="profile-user">
+
+          <h4 id="Username">USERNAME</h4>
+
+        </div>
+
+
+
+        <div id="user-info">
+          <h5>Room ID</h5>
+          <h6 id="room-id"></h6>
+
+          <h5>Latency</h5>
+          <h6 id="latency"></h6>
+        </div>
+        <div id="voice-buttons-div">
+          <nav>
+            <li title="Mute/Unmute" id="mic"><img  src="/assets/mic-closed.png" style="width : 18px;
+              height: 23px;" alt="logo"/></li>
+            <li title="Deafen/Undeafen" id="deaf"><img  src="/assets/deaf.png" style="width : 20px;
+              height: 22px; "alt="logo"/></li>
+            <li title="Enable/Disable camera" id="camera"><img  src="/assets/camera.png" style="width : 27px;
+              height: 22px; "alt="logo"/></li>
+          </nav>
+        </div>
+      </div>
+
+
+
+
+
+  </section>
+
+  </div>
+
+  <div id="messaging-container" style="display:none">
+
+
+  <div id="usersList" style="display:none">
+    <h3 >Participants</h3>
+    <ul id="participants"></ul>
+  </div>
+
+  <div id="chat" style="display:none">
+
+          <h3 >Chat</h3>
+      <div id = "chat-area">
+      </div>
+
+
+
+      <div id="mess">
+
+        <input type="text" id="message-input" placeholder="Enter your message" required>
+        <img src = "assets/send.png" style="width : 25px;
+        height: 25px;" alt="logo" id="send-button">
+      </div>
+  </div>
+
+
+  <div id="aside-navigation">
+    <nav id="navigation" style="display:none">
+      <li title="Chat" class="chatButtons" id="chat-logo">Chat</li>
+      <li title="Show users" class="chatButtons" id="users-logo">Users</li>
+      <li title="Disconnect" id="exit" class="chatButtons" alt="Disconnect" style="color:#bb4444"/>Disconnect</li>
+    </nav>
+  </div>
+
+
+  </div>
+</div>
+
+  <script>
+    var input = document.getElementById("message-input");
+    input.addEventListener("keyup", function(event) {
+      if (event.keyCode === 13) {
+       event.preventDefault();
+       document.getElementById("send-button").click();
+      }
+    });
+
+    var input = document.getElementById("user-id");
+    input.addEventListener("keyup", function(event) {
+      if (event.keyCode === 13) {
+       event.preventDefault();
+       document.getElementById("connect-button").click();
+      }
+    });
+  </script>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.5.4/socket.io.js" integrity="sha512-YeeA/Qxn5hYdkukScTCNNOhTrv1C2RubAGButJ1rmgQwZf/HdRaCGl+JAVkqsqaNRaYNHdheiuKKuPf9mDcqKg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script type="text/javascript" src="client.js"></script>
+  
+
+</body>
+</html>
